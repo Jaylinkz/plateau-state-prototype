@@ -1,4 +1,5 @@
 {
+  "homepage":"https://jaylinkz.github.io/plateau-state-prototype/",
   "name": "argon-dashboard-mui",
   "version": "3.0.1",
   "author": "Creative Tim",
@@ -26,6 +27,7 @@
     "ajv": "^8.17.1",
     "chart.js": "3.9.1",
     "chroma-js": "2.4.2",
+    "gh-pages": "^6.1.1",
     "prop-types": "15.8.1",
     "react": ">=16.8.0",
     "react-chartjs-2": "3.0.4",
@@ -46,6 +48,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+  , "predeploy": "npm run build", "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -76,7 +79,8 @@
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "prettier": "2.8.8"
+    "prettier": "2.8.8",
+    "serve": "^14.2.3"
   },
   "overrides": {
     "svgo": "3.0.2"
