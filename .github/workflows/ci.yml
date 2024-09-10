@@ -1,5 +1,8 @@
 name: CI
 
+permissions:
+  contents: write 
+  
 on:
   push:
     branches:
@@ -29,3 +32,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build  # Adjust this if your build output directory is different
+          force: true
