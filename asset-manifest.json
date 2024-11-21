@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/plateau-state-prototype/static/css/main.8eca6fea.css",
-    "main.js": "/plateau-state-prototype/static/js/main.f7447716.js",
+    "main.css": "/plateau-state-prototype/static/css/main.f4c34786.css",
+    "main.js": "/plateau-state-prototype/static/js/main.468e8759.js",
     "static/media/vr-bg.jpg": "/plateau-state-prototype/static/media/vr-bg.09e3bc1cff3711b57a2c.jpg",
     "static/media/platStet.png": "/plateau-state-prototype/static/media/platStet.b34c31b40dd6d08f38f5.png",
     "static/media/img-2.jpg": "/plateau-state-prototype/static/media/img-2.d97bd8ee71e6afc19404.jpg",
@@ -34,7 +34,7 @@
     "index.html": "/plateau-state-prototype/index.html"
   },
   "entrypoints": [
-    "static/css/main.8eca6fea.css",
-    "static/js/main.f7447716.js"
+    "static/css/main.f4c34786.css",
+    "static/js/main.468e8759.js"
   ]
 }

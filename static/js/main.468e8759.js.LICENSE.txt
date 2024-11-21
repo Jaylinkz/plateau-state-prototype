@@ -1,3 +1,8 @@
+/* @preserve
+ * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
+ * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
+ */
+
 /*!
  * @kurkle/color v0.2.1
  * https://github.com/kurkle/color#readme
@@ -33,14 +38,14 @@
  */
 
 /*!
- * github-buttons v2.29.0
+ * github-buttons v2.29.1
  * (c) 2024 なつき
  * @license BSD-2-Clause
  */
 
 /*!
- * perfect-scrollbar v1.5.3
- * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
+ * perfect-scrollbar v1.5.6
+ * Copyright 2024 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
  */
 
