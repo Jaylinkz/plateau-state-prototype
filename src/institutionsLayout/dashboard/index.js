@@ -94,7 +94,7 @@ function Default() {
                   <ArgonTypography variant="button" color="text" fontWeight="medium">
                     4% more{" "}
                     <ArgonTypography variant="button" color="text" fontWeight="regular">
-                      in 2022
+                      in 2025
                     </ArgonTypography>
                   </ArgonTypography>
                 </ArgonBox>

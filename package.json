@@ -1,5 +1,5 @@
 {
-  "homepage":"https://jaylinkz.github.io/plateau-state-prototype/",
+  "homepage": "https://jaylinkz.github.io/plateau-state-prototype/",
   "name": "argon-dashboard-mui",
   "version": "3.0.1",
   "author": "Creative Tim",
@@ -28,12 +28,14 @@
     "chart.js": "3.9.1",
     "chroma-js": "2.4.2",
     "gh-pages": "^6.1.1",
+    "leaflet": "^1.9.4",
     "prop-types": "15.8.1",
     "react": ">=16.8.0",
     "react-chartjs-2": "3.0.4",
     "react-countup": "6.4.2",
     "react-dom": ">=16.8.0",
     "react-github-btn": "1.4.0",
+    "react-leaflet": "^4.2.1",
     "react-perfect-scrollbar": "1.5.8",
     "react-router-dom": "6.11.1",
     "react-scripts": "5.0.1",
@@ -47,8 +49,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
-  , "predeploy": "npm run build", "deploy": "gh-pages -d build"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

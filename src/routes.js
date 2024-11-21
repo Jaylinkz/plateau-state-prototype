@@ -36,7 +36,9 @@ Coded by www.creative-tim.com
 // Argon Dashboard 2 MUI layouts
 import Dashboard from "layouts/dashboard";
 import Institutions from "institutionsLayout/dashboard";
-import Tables from "layouts/tables";
+import Schools from "layouts/Schools";
+import Hospitals from "layouts/Hospitals";
+import Hotels from "layouts/Hotels"; 
 import Billing from "layouts/billing";
 import VirtualReality from "layouts/virtual-reality";
 import RTL from "layouts/rtl";
@@ -58,14 +60,35 @@ const routes = [
   },
   {
     type: "route",
-    name: "Institutions",
-    key: "tables",
-    route: "/tables",
+    name: "schools",
+    key: "schools",
+    route: "/schools",
     icon: (
       <ArgonBox component="i" color="warning" fontSize="14px" className="ni ni-calendar-grid-58" />
     ),
-    component: <Tables />,
+    component: <Schools />,
   },
+  {
+    type: "route",
+    name: "Hotels",
+    key: "tables",
+    route: "/Hotels",
+    icon: (
+      <ArgonBox component="i" color="warning" fontSize="14px" className="ni ni-calendar-grid-58" />
+    ),
+    component: <Hotels />,
+  },
+  {
+    type: "route",
+    name: "Hospitals",
+    key: "tables",
+    route: "/Hospitals",
+    icon: (
+      <ArgonBox component="i" color="warning" fontSize="14px" className="ni ni-calendar-grid-58" />
+    ),
+    component: <Hospitals />,
+  },
+
   {
     type: "route",
     name: "Payments",
@@ -73,6 +96,7 @@ const routes = [
     route: "/billing",
     icon: <ArgonBox component="i" color="success" fontSize="14px" className="ni ni-credit-card" />,
     component: <Billing />,
+
   },
   // {
   //   type: "route",

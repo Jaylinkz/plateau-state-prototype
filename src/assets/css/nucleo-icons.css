@@ -23,6 +23,9 @@ License - nucleoapp.com/license/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.custom-select {
+  width: 150px; /* Adjust the width as needed */
+}
 
 /*------------------------
   change icon size

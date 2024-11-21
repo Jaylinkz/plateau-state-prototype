@@ -57,6 +57,7 @@ import {
 
 // Images
 import team2 from "assets/images/team-2.jpg";
+
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 
 function DashboardNavbar({ absolute, light, isMini }) {
@@ -112,14 +113,14 @@ function DashboardNavbar({ absolute, light, isMini }) {
     >
       <NotificationItem
         image={<img src={team2} alt="person" />}
-        title={["New message", "from Laur"]}
+        title={["St Louis college's", "License expired"]}
         date="13 minutes ago"
         onClick={handleCloseMenu}
       />
-      <NotificationItem
-        image={<img src={logoSpotify} alt="person" />}
-        title={["New album", "by Travis Scott"]}
-        date="1 day"
+       <NotificationItem
+        image={<img src={team2} alt="person" />}
+        title={["St Louis college's", "License expired"]}
+        date="13 minutes ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
@@ -129,7 +130,19 @@ function DashboardNavbar({ absolute, light, isMini }) {
             payment
           </Icon>
         }
-        title={["", "Payment successfully completed"]}
+        title={["", "Payment by St paul's anglican school successfully completed"]}
+        date="2 days"
+        onClick={handleCloseMenu}
+      />
+
+<NotificationItem
+        color="secondary"
+        image={
+          <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
+            payment
+          </Icon>
+        }
+        title={["", "Payment by St Theresa's college school successfully completed"]}
         date="2 days"
         onClick={handleCloseMenu}
       />

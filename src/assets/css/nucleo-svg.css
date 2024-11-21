@@ -12,6 +12,9 @@ Icon colors
   height: 1em;
   width: 1em;
 }
+.custom-select {
+  width: 150px; /* Adjust the width as needed */
+}
 
 .icon use {
   /* icon secondary color - fill */

@@ -12,7 +12,7 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-
+// 9.925704191707313, 8.879742257363066
 // @mui material components
 import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
@@ -20,6 +20,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import MapIcon from "@mui/icons-material/Map";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 // Argon Dashboard 2 MUI components
 import ArgonBox from "components/ArgonBox";
@@ -32,39 +36,36 @@ import Footer from "examples/Footer";
 import Table from "examples/Tables/Table";
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
+import authorsTableData from "layouts/Schools/data/authorsTableData";
 import hospitalsTableData from "layouts/tables/data/projectsTableData";
 import hotelsTableData from "layouts/tables/data/hotelsTableData";
+
+import React from 'react';
 
 function Schools() {
   const { columns, rows } = authorsTableData;
   const { columns: prCols, rows: prRows } = hospitalsTableData;
   const { columns: hCols, rows: hRows } = hotelsTableData;
 
-  // Modify the columns to change 'completion' to 'license status'
-  // const modifiedPrCols = prCols.map(col => 
-  //   col.name === "completion" ? { ...col, name: "license status" } : col
-  // );
+  const [tabValue, setTabValue] = React.useState(0);
+  const [licenseFilter, setLicenseFilter] = React.useState("all");
 
-  // Modify the rows to change 'completion' to 'license status' and add 'location' button
-  // const modifiedPrRows = prRows.map(row => ({
-  //   ...row,
-  //   "license status": (
-  //     <ArgonTypography variant="caption" color="text" fontWeight="medium">
-  //       {row.completion.props.value >= 50 ? "renewed" : "expired"}
-  //     </ArgonTypography>
-  //   ),
-  //   location: (
-  //     <Button
-  //       variant="contained"
-  //       color="primary"
-  //       startIcon={<MapIcon />}
-  //       onClick={() => openMap(row.latitude, row.longitude)} // You'll need to add latitude and longitude to your data
-  //     >
-  //       View Map
-  //     </Button>
-  //   )
-  // }));
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
+
+  const handleLicenseFilterChange = (event) => {
+    setLicenseFilter(event.target.value);
+  };
+
+  const filteredRows = rows.filter((row) => {
+    if (licenseFilter === "all") return true;
+    const badgeContent = row["license status"].props.badgeContent; // Extract the badge content
+    return badgeContent === licenseFilter;
+  });
+
+  const publicSchools = filteredRows.filter((row) => row.type.props.job === "Public");
+  const privateSchools = filteredRows.filter((row) => row.type.props.job === "Private");
 
   return (
     <DashboardLayout>
@@ -73,8 +74,8 @@ function Schools() {
         <ArgonBox mb={3}>
           <Card>
             <ArgonBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <ArgonTypography variant="h6">Schools</ArgonTypography>
-              <TextField
+              {/* <ArgonTypography variant="h6">Schools</ArgonTypography> */}
+              {/* <TextField
                 placeholder="Search..."
                 variant="outlined"
                 size="small"
@@ -85,8 +86,24 @@ function Schools() {
                     </InputAdornment>
                   ),
                 }}
-              />
+              /> */}
+              <Select
+                value={licenseFilter}
+                onChange={handleLicenseFilterChange}
+                displayEmpty
+                inputProps={{ 'aria-label': 'License Filter' }}
+                size="small"
+                className="custom-select"
+              >
+                <MenuItem value="all">All Licenses</MenuItem>
+                <MenuItem value="renewed">Renewed</MenuItem>
+                <MenuItem value="expired">Expired</MenuItem>
+              </Select>
             </ArgonBox>
+            <Tabs value={tabValue} onChange={handleTabChange} aria-label="school type tabs" sx={{ fontSize: '0.75rem' }}>
+              <Tab label="Public Schools" />
+              <Tab label="Private Schools" />
+            </Tabs>
             <ArgonBox
               sx={{
                 "& .MuiTableRow-root:not(:last-child)": {
@@ -97,12 +114,12 @@ function Schools() {
                 },
               }}
             >
-              <Table columns={columns} rows={rows} />
+              <Table columns={columns} rows={tabValue === 0 ? publicSchools : privateSchools} />
             </ArgonBox>
           </Card>
         </ArgonBox>
         
-        <Card>
+        {/* <Card>
           <ArgonBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
             <ArgonTypography variant="h6">Hospitals</ArgonTypography>
             <TextField
@@ -128,7 +145,7 @@ function Schools() {
               },
             }}
           >
-            <Table columns={prCols} rows={prRows} />
+            <Table columns={hCols} rows={hRows} />
           </ArgonBox>
         </Card>
         <ArgonBox mt={3}>
@@ -161,7 +178,7 @@ function Schools() {
               <Table columns={hCols} rows={hRows} />
             </ArgonBox>
           </Card>
-        </ArgonBox>
+        </ArgonBox> */}
       </ArgonBox>
       <Footer />
     </DashboardLayout>

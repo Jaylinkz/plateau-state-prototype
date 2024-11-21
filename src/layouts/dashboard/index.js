@@ -30,7 +30,7 @@ import DetailedStatisticsCard from "examples/Cards/StatisticsCards/DetailedStati
 import SalesTable from "examples/Tables/SalesTable";
 import CategoriesList from "examples/Lists/CategoriesList";
 import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
-
+import HorizontalBarChart from "examples/Charts/BarCharts/HorizontalBarChart";
 // Argon Dashboard 2 MUI base styles
 import typography from "assets/theme/base/typography";
 
@@ -84,7 +84,7 @@ function Default() {
         </Grid>
         <Grid container spacing={3} mb={3}>
           <Grid item xs={12} lg={7}>
-            <GradientLineChart
+          <HorizontalBarChart
               title="Revenue trend"
               description={
                 <ArgonBox display="flex" alignItems="center">
@@ -94,7 +94,7 @@ function Default() {
                   <ArgonTypography variant="button" color="text" fontWeight="medium">
                     4% more{" "}
                     <ArgonTypography variant="button" color="text" fontWeight="regular">
-                      in 2022
+                      in 2025
                     </ArgonTypography>
                   </ArgonTypography>
                 </ArgonBox>
@@ -121,3 +121,6 @@ function Default() {
 }
 
 export default Default;
+
+// No, this part of the code does not handle background color.
+// To find the source of the blue background color at the top part of the page, you should check the styles applied to the DashboardNavbar component.

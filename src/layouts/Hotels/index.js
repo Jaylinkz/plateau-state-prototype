@@ -14,12 +14,16 @@ Coded by www.creative-tim.com
 */
 
 // @mui material components
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import MapIcon from "@mui/icons-material/Map";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+
 
 // Argon Dashboard 2 MUI components
 import ArgonBox from "components/ArgonBox";
@@ -36,10 +40,21 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import hospitalsTableData from "layouts/tables/data/projectsTableData";
 import hotelsTableData from "layouts/tables/data/hotelsTableData";
 
-function Schools() {
-  const { columns, rows } = authorsTableData;
-  const { columns: prCols, rows: prRows } = hospitalsTableData;
+function Hotels() {
   const { columns: hCols, rows: hRows } = hotelsTableData;
+  const [licenseFilter, setLicenseFilter] = useState("all");
+  
+  const handleLicenseFilterChange = (event) => {
+    setLicenseFilter(event.target.value);
+  };
+
+  const filteredRows = hRows.filter((row) => {
+    if (licenseFilter === "all") return true;
+    // Access the status using the data attribute
+    const licenseStatus = row["license status"];
+    const badgeContent = licenseStatus?.props?.['data-status'];
+    return badgeContent === licenseFilter;
+  });
 
   // Modify the columns to change 'completion' to 'license status'
   // const modifiedPrCols = prCols.map(col => 
@@ -70,83 +85,21 @@ function Schools() {
     <DashboardLayout>
       <DashboardNavbar />
       <ArgonBox py={3}>
-        <ArgonBox mb={3}>
-          <Card>
-            <ArgonBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <ArgonTypography variant="h6">Schools</ArgonTypography>
-              <TextField
-                placeholder="Search..."
-                variant="outlined"
-                size="small"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </ArgonBox>
-            <ArgonBox
-              sx={{
-                "& .MuiTableRow-root:not(:last-child)": {
-                  "& td": {
-                    borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                      `${borderWidth[1]} solid ${borderColor}`,
-                  },
-                },
-              }}
-            >
-              <Table columns={columns} rows={rows} />
-            </ArgonBox>
-          </Card>
-        </ArgonBox>
-        
-        <Card>
-          <ArgonBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-            <ArgonTypography variant="h6">Hospitals</ArgonTypography>
-            <TextField
-              placeholder="Search..."
-              variant="outlined"
-              size="small"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </ArgonBox>
-          <ArgonBox
-            sx={{
-              "& .MuiTableRow-root:not(:last-child)": {
-                "& td": {
-                  borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                    `${borderWidth[1]} solid ${borderColor}`,
-                },
-              },
-            }}
-          >
-            <Table columns={prCols} rows={prRows} />
-          </ArgonBox>
-        </Card>
         <ArgonBox mt={3}>
           <Card>
             <ArgonBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                <ArgonTypography variant="h6">Hotels</ArgonTypography>
-              <TextField
-                placeholder="Search..."
-                variant="outlined"
+              <Select
+                value={licenseFilter}
+                onChange={handleLicenseFilterChange}
+                displayEmpty
+                inputProps={{ 'aria-label': 'License Filter' }}
                 size="small"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+                sx={{ width: 150 }}
+              >
+                <MenuItem value="all">All Licenses</MenuItem>
+                <MenuItem value="renewed">Renewed</MenuItem>
+                <MenuItem value="expired">Expired</MenuItem>
+              </Select>
             </ArgonBox>
             <ArgonBox
               sx={{
@@ -158,7 +111,7 @@ function Schools() {
                 },
               }}
             >
-              <Table columns={hCols} rows={hRows} />
+              <Table columns={hCols} rows={filteredRows} />
             </ArgonBox>
           </Card>
         </ArgonBox>
@@ -168,4 +121,4 @@ function Schools() {
   );
 }
 
-export default Schools;
+export default Hotels;
