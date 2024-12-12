@@ -15,6 +15,9 @@ import ArgonBadge from "components/ArgonBadge";
 // React imports
 import React, { useState } from "react";
 
+// Custom components
+import LeafletMap from "components/LeafletMap";
+
 const action = (
   <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small">
     more_vert
@@ -22,6 +25,9 @@ const action = (
 );
 
 function MapModal({ isOpen, onClose, location, hospitalName }) {
+  // Convert location string to array of numbers
+  const locationCoords = location.split(',').map(coord => parseFloat(coord.trim()));
+
   return (
     <Modal
       open={isOpen}
@@ -42,14 +48,11 @@ function MapModal({ isOpen, onClose, location, hospitalName }) {
         p: 4,
       }}>
         <h2 id="map-modal-title">{hospitalName} Location</h2>
-        <iframe
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          style={{ border: 0 }}
-          src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${location}`}
-          allowFullScreen
-        ></iframe>
+        <LeafletMap 
+          location={locationCoords} 
+          name={hospitalName} 
+          style={{ height: '100%', width: '100%' }} 
+        />
       </Box>
     </Modal>
   );
@@ -81,9 +84,11 @@ LocationButton.displayName = 'LocationButton';
 const hospitalsTableData = {
   columns: [
     { name: "hospital", align: "left" },
+    { name: "type", align: "left" },
     { name: "lga", align: "left" },
     { name: "license status", align: "center" },
     { name: "number of staff", align: "center" },
+    { name: "expected income from paye", align: "center" }, // Added column
     { name: "paye tax status", align: "center" },
     { name: "action", align: "center" },
     { name: "location", align: "center" },
@@ -99,6 +104,11 @@ const hospitalsTableData = {
         </ArgonBox>,
         "Jos Medical Hospital"
       ],
+      type: (
+        <ArgonTypography variant="button" color="text" fontWeight="medium" type="public">
+          Public
+        </ArgonTypography>
+      ),
       lga: (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           Jos North
@@ -112,6 +122,11 @@ const hospitalsTableData = {
           150
         </ArgonTypography>
       ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          150,000
+        </ArgonTypography>
+      ), // Calculated expected income from paye
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
       ),
@@ -127,6 +142,11 @@ const hospitalsTableData = {
         </ArgonBox>,
         "Plateau General Hospital"
       ],
+      type: (
+        <ArgonTypography variant="button" color="text" fontWeight="medium" type="public">
+          Public
+        </ArgonTypography>
+      ),
       lga: (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           Jos South
@@ -140,6 +160,11 @@ const hospitalsTableData = {
           200
         </ArgonTypography>
       ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          200,000
+        </ArgonTypography>
+      ), // Calculated expected income from paye
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="unpaid" color="error" size="xs" container />
       ),
@@ -155,6 +180,11 @@ const hospitalsTableData = {
         </ArgonBox>,
         "Jos University Teaching Hospital"
       ],
+      type: (
+        <ArgonTypography variant="button" color="text" fontWeight="medium" type="public">
+          Public
+        </ArgonTypography>
+      ),
       lga: (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           Jos North
@@ -168,6 +198,11 @@ const hospitalsTableData = {
           300
         </ArgonTypography>
       ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          300,000
+        </ArgonTypography>
+      ), // Calculated expected income from paye
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
       ),
@@ -183,6 +218,11 @@ const hospitalsTableData = {
         </ArgonBox>,
         "Bingham Memorial Hospital"
       ],
+      type: (
+        <ArgonTypography variant="button" color="text" fontWeight="medium" type="private">
+          Private
+        </ArgonTypography>
+      ),
       lga: (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           Jos South
@@ -196,6 +236,11 @@ const hospitalsTableData = {
           100
         </ArgonTypography>
       ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          100,000
+        </ArgonTypography>
+      ), // Calculated expected income from paye
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
       ),
@@ -211,6 +256,11 @@ const hospitalsTableData = {
         </ArgonBox>,
         "Our Lady of Apostles Hospital"
       ],
+      type: (
+        <ArgonTypography variant="button" color="text" fontWeight="medium" type="private">
+          Private
+        </ArgonTypography>
+      ),
       lga: (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           Jos North
@@ -224,6 +274,11 @@ const hospitalsTableData = {
           120
         </ArgonTypography>
       ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          120,000
+        </ArgonTypography>
+      ), // Calculated expected income from paye
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="unpaid" color="error" size="xs" container />
       ),
@@ -239,6 +294,11 @@ const hospitalsTableData = {
         </ArgonBox>,
         "Pankshin Medical Hospital"
       ],
+      type: (
+        <ArgonTypography variant="button" color="text" fontWeight="medium" type="public">
+          Public
+        </ArgonTypography>
+      ),
       lga: (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           Pankshin
@@ -252,6 +312,11 @@ const hospitalsTableData = {
           80
         </ArgonTypography>
       ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          80,000
+        </ArgonTypography>
+      ), // Calculated expected income from paye
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
       ),

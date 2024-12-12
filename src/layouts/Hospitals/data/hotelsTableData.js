@@ -12,6 +12,10 @@ import ArgonTypography from "components/ArgonTypography";
 import ArgonBadge from "components/ArgonBadge";
 import { useState } from "react";
 
+// Leaflet components for map
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+
 function LicenseStatus({ status }) {
   return (
     <ArgonBadge
@@ -43,6 +47,8 @@ const action = (
 );
 
 function MapModal({ isOpen, onClose, location, hotelName }) {
+  const [latitude, longitude] = '9.8751192878176,8.88407860998505'.split(',').map(Number);
+
   return (
     <Modal
       open={isOpen}
@@ -51,26 +57,39 @@ function MapModal({ isOpen, onClose, location, hotelName }) {
       aria-describedby="map-modal-description"
     >
       <Box sx={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 600,
-        height: 450,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
+       position: 'absolute',
+       top: '50%',
+       left: '50%',
+       transform: 'translate(-50%, -50%)',
+       width: 600,
+       height: 450,
+       bgcolor: 'background.paper',
+       border: '2px solid #000',
+       boxShadow: 24,
+       p: 4,
+       display: 'flex',
+       flexDirection: 'column'
       }}>
-        <h2 id="map-modal-title">{hotelName} Location</h2>
-        <iframe
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          style={{ border: 0 }}
-          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBQHKZTwhPJX_9IevM5jKC8kmz0Tl0dGis&q=${location}`}
-          allowFullScreen
-        ></iframe>
+        <ArgonTypography
+          variant="h6" // You can change this to h5, h4, etc. based on your design
+          fontWeight="bold" // Make the font bold
+          color="primary" // Change the color to your theme's primary color
+          sx={{ marginBottom: 2 }} // Add some margin below the title
+          id="map-modal-title"
+        >{hotelName} Location</ArgonTypography>
+        <MapContainer
+          center={[latitude, longitude]}
+          zoom={13}
+          style={{ height: '100%', width: '100%' }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={[latitude, longitude]}>
+            <Popup>{hotelName}</Popup>
+          </Marker>
+        </MapContainer>
       </Box>
     </Modal>
   );
@@ -131,7 +150,7 @@ const hotelsTableData = {
       ),
       "paye tax status": <PayeStatus status="paid" />,
       action,
-      map: <LocationPointer location="9.8965,8.8583" hotelName="Hill Station Hotel" />,
+      map: <LocationPointer location="9.910042127796425,8.87883832162263" hotelName="Hill Station Hotel" />,
     },
     {
       hotel: [
@@ -155,7 +174,7 @@ const hotelsTableData = {
       ),
       "paye tax status": <PayeStatus status="unpaid" />,
       action,
-      map: <LocationPointer location="9.9167,8.8833" hotelName="Crest Point Hotel" />,
+      map: <LocationPointer location="9.8751192878176,8.88407860998505" hotelName="Crest Point Hotel" />,
     },
     {
       hotel: [

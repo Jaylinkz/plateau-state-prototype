@@ -11,9 +11,11 @@ import Box from "@mui/material/Box";
 import ArgonBox from "components/ArgonBox";
 import ArgonTypography from "components/ArgonTypography";
 import ArgonBadge from "components/ArgonBadge";
+import ArgonButton from "components/ArgonButton";
 
 // React imports
 import React, { useState } from "react";
+import LeafletMap from "components/LeafletMap";
 
 const action = (
   <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small">
@@ -22,6 +24,9 @@ const action = (
 );
 
 function MapModal({ isOpen, onClose, location, hospitalName }) {
+  // Convert location string to array of numbers
+  const locationCoords = location.split(',').map(coord => parseFloat(coord.trim()));
+
   return (
     <Modal
       open={isOpen}
@@ -34,231 +39,177 @@ function MapModal({ isOpen, onClose, location, hospitalName }) {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 600,
-        height: 450,
+        width: '80vw',
+        maxWidth: '800px',
+        height: '70vh',
         bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
+        borderRadius: '10px',
+        boxShadow: '0 8px 32px 0 rgba(0,0,0,0.1)',
+        p: 0,
+        overflow: 'hidden'
       }}>
-        <h2 id="map-modal-title">{hospitalName} Location</h2>
-        <iframe
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          style={{ border: 0 }}
-          src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${location}`}
-          allowFullScreen
-        ></iframe>
+        <ArgonBox 
+          p={2} 
+          borderBottom="1px solid" 
+          borderColor="rgb(226, 232, 240)"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <ArgonTypography variant="h6" fontWeight="medium">
+            {hospitalName} Location
+          </ArgonTypography>
+          <ArgonButton 
+            variant="text" 
+            color="primary"
+            onClick={onClose}
+            sx={{ minWidth: 'auto', p: 1 }}
+          >
+            <Icon sx={{ color: 'rgb(103, 116, 142)' }}>close</Icon>
+          </ArgonButton>
+        </ArgonBox>
+        <Box sx={{ width: '100%', height: 'calc(100% - 60px)' }}>
+          <LeafletMap 
+            location={locationCoords} 
+            name={hospitalName} 
+            style={{ height: '100%', width: '100%' }} 
+          />
+        </Box>
       </Box>
     </Modal>
   );
 }
 
-const LocationButton = React.memo(({ location, hospitalName }) => {
+function LocationButton({ location, hospitalName }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpen = () => setIsModalOpen(true);
-  const handleClose = () => setIsModalOpen(false);
 
   return (
     <>
-      <IconButton onClick={handleOpen}>
-        <LocationOnIcon />
-      </IconButton>
+      <ArgonButton
+        variant="text"
+        color="primary"
+        onClick={() => setIsModalOpen(true)}
+        sx={{ minWidth: 'auto' }}
+      >
+        <Icon sx={{ color: 'rgb(103, 116, 142)' }}>location_on</Icon>
+      </ArgonButton>
       <MapModal
         isOpen={isModalOpen}
-        onClose={handleClose}
+        onClose={() => setIsModalOpen(false)}
         location={location}
         hospitalName={hospitalName}
       />
     </>
   );
-});
+}
 
-LocationButton.displayName = 'LocationButton';
-
-const hospitalsTableData = {
+const hotelsTableData = {
   columns: [
-    { name: "hospital", align: "left" },
-    { name: "lga", align: "left" },
+    { name: "hotel", align: "left" },
+    { name: "type", align: "left" },
     { name: "license status", align: "center" },
-    { name: "number of staff", align: "center" },
+    { name: "number of rooms", align: "center" },
     { name: "paye tax status", align: "center" },
+    { name: "expected income", align: "center" },
     { name: "action", align: "center" },
     { name: "location", align: "center" },
   ],
 
   rows: [
     {
-      hospital: [
-        <ArgonBox display="flex" alignItems="center" key="JMH">
+      hotel: [
+        <ArgonBox display="flex" alignItems="center" key="Plateau Hotel">
           <ArgonTypography variant="button" fontWeight="bold">
-            JMH
+            PH
           </ArgonTypography>
         </ArgonBox>,
-        "Jos Medical Hospital"
+        "Plateau Hotel"
       ],
-      lga: (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          Jos North
-        </ArgonTypography>
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="STANDARD" color="info" size="xs" container />
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
       ),
-      "number of staff": (
+      "number of rooms": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
-          150
+          75
         </ArgonTypography>
       ),
       "paye tax status": (
-        <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="PAID" color="success" size="xs" container />
+      ),
+      "expected income": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          2,500,000
+        </ArgonTypography>
       ),
       action,
-      location: <LocationButton location="9.8965,8.8583" hospitalName="Jos Medical Hospital" />,
+      location: <LocationButton location="9.8965,8.8583" hospitalName="Plateau Hotel" />,
     },
     {
-      hospital: [
-        <ArgonBox display="flex" alignItems="center" key="PGH">
+      hotel: [
+        <ArgonBox display="flex" alignItems="center" key="Hillcrest Hotel">
           <ArgonTypography variant="button" fontWeight="bold">
-            PGH
+            HH
           </ArgonTypography>
         </ArgonBox>,
-        "Plateau General Hospital"
+        "Hillcrest Hotel"
       ],
-      lga: (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          Jos South
-        </ArgonTypography>
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="LUXURY" color="primary" size="xs" container />
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="expired" color="error" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
       ),
-      "number of staff": (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          200
-        </ArgonTypography>
-      ),
-      "paye tax status": (
-        <ArgonBadge variant="gradient" badgeContent="unpaid" color="error" size="xs" container />
-      ),
-      action,
-      location: <LocationButton location="9.8965,8.8583" hospitalName="Plateau General Hospital" />,
-    },
-    {
-      hospital: [
-        <ArgonBox display="flex" alignItems="center" key="JUTH">
-          <ArgonTypography variant="button" fontWeight="bold">
-            JUTH
-          </ArgonTypography>
-        </ArgonBox>,
-        "Jos University Teaching Hospital"
-      ],
-      lga: (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          Jos North
-        </ArgonTypography>
-      ),
-      "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
-      ),
-      "number of staff": (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          300
-        </ArgonTypography>
-      ),
-      "paye tax status": (
-        <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
-      ),
-      action,
-      location: <LocationButton location="9.8965,8.8583" hospitalName="Jos University Teaching Hospital" />,
-    },
-    {
-      hospital: [
-        <ArgonBox display="flex" alignItems="center" key="BMH">
-          <ArgonTypography variant="button" fontWeight="bold">
-            BMH
-          </ArgonTypography>
-        </ArgonBox>,
-        "Bingham Memorial Hospital"
-      ],
-      lga: (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          Jos South
-        </ArgonTypography>
-      ),
-      "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
-      ),
-      "number of staff": (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          100
-        </ArgonTypography>
-      ),
-      "paye tax status": (
-        <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
-      ),
-      action,
-      location: <LocationButton location="9.8965,8.8583" hospitalName="Bingham Memorial Hospital" />,
-    },
-    {
-      hospital: [
-        <ArgonBox display="flex" alignItems="center" key="OLA">
-          <ArgonTypography variant="button" fontWeight="bold">
-            OLA
-          </ArgonTypography>
-        </ArgonBox>,
-        "Our Lady of Apostles Hospital"
-      ],
-      lga: (
-        <ArgonTypography variant="button" color="text" fontWeight="medium">
-          Jos North
-        </ArgonTypography>
-      ),
-      "license status": (
-        <ArgonBadge variant="gradient" badgeContent="expired" color="error" size="xs" container />
-      ),
-      "number of staff": (
+      "number of rooms": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           120
         </ArgonTypography>
       ),
       "paye tax status": (
-        <ArgonBadge variant="gradient" badgeContent="unpaid" color="error" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="PAID" color="success" size="xs" container />
       ),
-      action,
-      location: <LocationButton location="9.8965,8.8583" hospitalName="Our Lady of Apostles Hospital" />,
-    },
-    {
-      hospital: [
-        <ArgonBox display="flex" alignItems="center" key="PMH">
-          <ArgonTypography variant="button" fontWeight="bold">
-            PMH
-          </ArgonTypography>
-        </ArgonBox>,
-        "Pankshin Medical Hospital"
-      ],
-      lga: (
+      "expected income": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
-          Pankshin
+          5,000,000
         </ArgonTypography>
       ),
-      "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
+      action,
+      location: <LocationButton location="9.8965,8.8583" hospitalName="Hillcrest Hotel" />,
+    },
+    {
+      hotel: [
+        <ArgonBox display="flex" alignItems="center" key="Budget Inn">
+          <ArgonTypography variant="button" fontWeight="bold">
+            BI
+          </ArgonTypography>
+        </ArgonBox>,
+        "Budget Inn"
+      ],
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="BUDGET" color="warning" size="xs" container />
       ),
-      "number of staff": (
+      "license status": (
+        <ArgonBadge variant="gradient" badgeContent="EXPIRED" color="error" size="xs" container />
+      ),
+      "number of rooms": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
-          80
+          40
         </ArgonTypography>
       ),
       "paye tax status": (
-        <ArgonBadge variant="gradient" badgeContent="paid" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="UNPAID" color="error" size="xs" container />
+      ),
+      "expected income": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          1,200,000
+        </ArgonTypography>
       ),
       action,
-      location: <LocationButton location="9.3333,9.4333" hospitalName="Pankshin Medical Hospital" />,
+      location: <LocationButton location="9.8965,8.8583" hospitalName="Budget Inn" />,
     },
   ],
 };
 
-export default hospitalsTableData;
+export default hotelsTableData;

@@ -36,6 +36,7 @@ import typography from "assets/theme/base/typography";
 
 // Dashboard layout components
 import Slider from "layouts/dashboard/components/Slider";
+import ComplianceAnalytics from 'layouts/ComplianceAnalytics';
 
 // Data
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";

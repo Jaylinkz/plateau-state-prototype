@@ -25,6 +25,8 @@ import Icon from "@mui/material/Icon";
 
 // Argon Dashboard 2 MUI components
 import ArgonBox from "components/ArgonBox";
+import 'leaflet/dist/leaflet.css';
+// import 'assets/css/leaflet-map.css';
 
 // Argon Dashboard 2 MUI example components
 import Sidenav from "examples/Sidenav";
@@ -54,6 +56,8 @@ import brandDark from "assets/images/platStet.png";
 // Icon Fonts
 import "assets/css/nucleo-icons.css";
 import "assets/css/nucleo-svg.css";
+
+import ComplianceAnalytics from "layouts/ComplianceAnalytics";
 
 export default function App() {
   const [controller, dispatch] = useArgonController();
@@ -161,6 +165,7 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes)}
+          <Route path="/compliance-analytics" element={<ComplianceAnalytics />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </ThemeProvider>
@@ -185,6 +190,7 @@ export default function App() {
       {layout === "vr" && <Configurator />}
       <Routes>
         {getRoutes(routes)}
+        <Route path="/compliance-analytics" element={<ComplianceAnalytics />} />
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
     </ThemeProvider>

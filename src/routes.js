@@ -45,9 +45,11 @@ import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import ComplianceAnalytics from "layouts/ComplianceAnalytics";
 
 // Argon Dashboard 2 MUI components
 import ArgonBox from "components/ArgonBox";
+import Icon from '@mui/material/Icon';
 
 const routes = [
   {
@@ -96,7 +98,14 @@ const routes = [
     route: "/billing",
     icon: <ArgonBox component="i" color="success" fontSize="14px" className="ni ni-credit-card" />,
     component: <Billing />,
-
+  },
+  {
+    type: "route",
+    name: "AI Compliance Analytics",
+    key: "compliance-analytics",
+    route: "/compliance-analytics",
+    icon: <ArgonBox component="i" color="info" fontSize="14px" className="ni ni-chart-bar-32" />,
+    component: <ComplianceAnalytics />,
   },
   // {
   //   type: "route",
