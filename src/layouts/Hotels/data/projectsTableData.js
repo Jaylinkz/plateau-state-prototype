@@ -23,9 +23,9 @@ const action = (
   </Icon>
 );
 
-function MapModal({ isOpen, onClose, location, hospitalName }) {
+function MapModal({ isOpen, onClose, location, hotelName }) {
   // Convert location string to array of numbers
-  const locationCoords = location.split(',').map(coord => parseFloat(coord.trim()));
+  const locationCoords = '9.832741158817356,8.894310679293955'.split(',').map(coord => parseFloat(coord.trim()));
 
   return (
     <Modal
@@ -57,7 +57,7 @@ function MapModal({ isOpen, onClose, location, hospitalName }) {
           alignItems="center"
         >
           <ArgonTypography variant="h6" fontWeight="medium">
-            {hospitalName} Location
+            {hotelName} Location
           </ArgonTypography>
           <ArgonButton 
             variant="text" 
@@ -71,7 +71,7 @@ function MapModal({ isOpen, onClose, location, hospitalName }) {
         <Box sx={{ width: '100%', height: 'calc(100% - 60px)' }}>
           <LeafletMap 
             location={locationCoords} 
-            name={hospitalName} 
+            name={hotelName} 
             style={{ height: '100%', width: '100%' }} 
           />
         </Box>
@@ -149,12 +149,12 @@ const hotelsTableData = {
     },
     {
       hotel: [
-        <ArgonBox display="flex" alignItems="center" key="Hillcrest Hotel">
+        <ArgonBox display="flex" alignItems="center" key="Elim Top suites">
           <ArgonTypography variant="button" fontWeight="bold">
-            HH
+            ELIM
           </ArgonTypography>
         </ArgonBox>,
-        "Hillcrest Hotel"
+        "Elim Top Suites"
       ],
       type: (
         <ArgonBadge variant="gradient" badgeContent="LUXURY" color="primary" size="xs" container />

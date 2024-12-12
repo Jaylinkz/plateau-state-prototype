@@ -16,9 +16,19 @@ function LeafletMap({ location, name, style }) {
   // Default coordinates for Nigeria
   const defaultPosition = [9.0820, 8.6753];
   
+  // Handle location whether it's a string or array
+  const coordinates = React.useMemo(() => {
+    if (!location) return defaultPosition;
+    if (Array.isArray(location)) return location;
+    if (typeof location === 'string') {
+      return location.split(',').map(coord => parseFloat(coord.trim()));
+    }
+    return defaultPosition;
+  }, [location]);
+
   return (
     <MapContainer
-      center={defaultPosition}
+      center={coordinates}
       zoom={13}
       style={{ width: "100%", height: "100%", ...style }}
     >
@@ -26,17 +36,15 @@ function LeafletMap({ location, name, style }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {location && (
-        <Marker position={location}>
-          <Popup>{name}</Popup>
-        </Marker>
-      )}
+      <Marker position={coordinates}>
+        <Popup>{name}</Popup>
+      </Marker>
     </MapContainer>
   );
 }
 
 LeafletMap.propTypes = {
-  location: PropTypes.arrayOf(PropTypes.number),
+  location: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.string]),
   name: PropTypes.string.isRequired,
   style: PropTypes.object,
 };

@@ -272,7 +272,7 @@ function Hospitals() {
 
   function MapModal({ isOpen, onClose, location, hospitalName }) {
     // Ensure location is properly formatted and handle potential undefined values
-    const locationCoords = location ? location.split(',').map(coord => parseFloat(coord.trim())) : [0, 0];
+    const locationCoords = '9.896359168097238,8.884034082438065' ? '9.896359168097238,8.884034082438065'.split(',').map(coord => parseFloat(coord.trim())) : [0, 0];
 
     return (
       <Modal

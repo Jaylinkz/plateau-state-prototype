@@ -51,7 +51,7 @@ function LicenseStatus({ icon, color, status }) {
 
 function MapModal({ isOpen, onClose, location, schoolName }) {
   // Convert location string to array of numbers
-  const locationCoords = location.split(',').map(coord => parseFloat(coord.trim()));
+  const locationCoords = '9.925725338025762,8.878873226982945'.split(',').map(coord => parseFloat(coord.trim()));
 
   return (
     <Modal
