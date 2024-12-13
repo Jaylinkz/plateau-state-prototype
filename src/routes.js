@@ -46,6 +46,7 @@ import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import ComplianceAnalytics from "layouts/ComplianceAnalytics";
+import FlaggedInstitutions from "layouts/FlaggedInstitutions";
 
 // Argon Dashboard 2 MUI components
 import ArgonBox from "components/ArgonBox";
@@ -98,6 +99,14 @@ const routes = [
     route: "/billing",
     icon: <ArgonBox component="i" color="success" fontSize="14px" className="ni ni-credit-card" />,
     component: <Billing />,
+  },
+  {
+    type: "route",
+    name: "Flagged Institutions",
+    key: "flagged-institutions",
+    route: "/flagged-institutions",
+    icon: <ArgonBox component="i" color="error" fontSize="14px" className="ni ni-notification-70" />,
+    component: <FlaggedInstitutions />,
   },
   {
     type: "route",

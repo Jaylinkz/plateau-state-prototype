@@ -105,7 +105,7 @@ const hospitalsTableData = {
         </ArgonTypography>
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="exempted" color="secondary" size="xs" container />
       ),
       "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
@@ -133,7 +133,7 @@ const hospitalsTableData = {
         </ArgonTypography>
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="expired" color="error" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="exempted" color="secondary" size="xs" container />
       ),
       "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
@@ -161,7 +161,7 @@ const hospitalsTableData = {
         </ArgonTypography>
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="exempted" color="secondary" size="xs" container />
       ),
       "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
@@ -189,7 +189,7 @@ const hospitalsTableData = {
         </ArgonTypography>
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="exempted" color="secondary" size="xs" container />
       ),
       "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
@@ -217,7 +217,7 @@ const hospitalsTableData = {
         </ArgonTypography>
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="expired" color="error" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="exempted" color="secondary" size="xs" container />
       ),
       "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
@@ -245,7 +245,7 @@ const hospitalsTableData = {
         </ArgonTypography>
       ),
       "license status": (
-        <ArgonBadge variant="gradient" badgeContent="renewed" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="exempted" color="secondary" size="xs" container />
       ),
       "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">

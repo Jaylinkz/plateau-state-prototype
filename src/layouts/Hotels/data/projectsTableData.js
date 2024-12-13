@@ -108,30 +108,34 @@ const hotelsTableData = {
     { name: "hotel", align: "left" },
     { name: "type", align: "left" },
     { name: "license status", align: "center" },
-    { name: "number of rooms", align: "center" },
+    { name: "number of staff", align: "center" },
     { name: "paye tax status", align: "center" },
-    { name: "expected income", align: "center" },
+    { name: "expected income from paye", align: "center" },
     { name: "action", align: "center" },
     { name: "location", align: "center" },
   ],
 
   rows: [
     {
-      hotel: [
-        <ArgonBox display="flex" alignItems="center" key="Plateau Hotel">
-          <ArgonTypography variant="button" fontWeight="bold">
-            PH
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              PH
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            Plateau Hotel
           </ArgonTypography>
-        </ArgonBox>,
-        "Plateau Hotel"
-      ],
+        </ArgonBox>
+      ),
       type: (
         <ArgonBadge variant="gradient" badgeContent="STANDARD" color="info" size="xs" container />
       ),
       "license status": (
         <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
       ),
-      "number of rooms": (
+      "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           75
         </ArgonTypography>
@@ -139,7 +143,7 @@ const hotelsTableData = {
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="PAID" color="success" size="xs" container />
       ),
-      "expected income": (
+      "expected income from paye": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           2,500,000
         </ArgonTypography>
@@ -148,21 +152,25 @@ const hotelsTableData = {
       location: <LocationButton location="9.8965,8.8583" hospitalName="Plateau Hotel" />,
     },
     {
-      hotel: [
-        <ArgonBox display="flex" alignItems="center" key="Elim Top suites">
-          <ArgonTypography variant="button" fontWeight="bold">
-            ELIM
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              ELIM
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            Elim Top Suites
           </ArgonTypography>
-        </ArgonBox>,
-        "Elim Top Suites"
-      ],
+        </ArgonBox>
+      ),
       type: (
         <ArgonBadge variant="gradient" badgeContent="LUXURY" color="primary" size="xs" container />
       ),
       "license status": (
         <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
       ),
-      "number of rooms": (
+      "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           120
         </ArgonTypography>
@@ -170,30 +178,34 @@ const hotelsTableData = {
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="PAID" color="success" size="xs" container />
       ),
-      "expected income": (
+      "expected income from paye": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           5,000,000
         </ArgonTypography>
       ),
       action,
-      location: <LocationButton location="9.8965,8.8583" hospitalName="Hillcrest Hotel" />,
+      location: <LocationButton location="9.8965,8.8583" hospitalName="Elim Top Suites" />,
     },
     {
-      hotel: [
-        <ArgonBox display="flex" alignItems="center" key="Budget Inn">
-          <ArgonTypography variant="button" fontWeight="bold">
-            BI
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              BI
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            Budget Inn
           </ArgonTypography>
-        </ArgonBox>,
-        "Budget Inn"
-      ],
+        </ArgonBox>
+      ),
       type: (
         <ArgonBadge variant="gradient" badgeContent="BUDGET" color="warning" size="xs" container />
       ),
       "license status": (
         <ArgonBadge variant="gradient" badgeContent="EXPIRED" color="error" size="xs" container />
       ),
-      "number of rooms": (
+      "number of staff": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           40
         </ArgonTypography>
@@ -201,13 +213,188 @@ const hotelsTableData = {
       "paye tax status": (
         <ArgonBadge variant="gradient" badgeContent="UNPAID" color="error" size="xs" container />
       ),
-      "expected income": (
+      "expected income from paye": (
         <ArgonTypography variant="button" color="text" fontWeight="medium">
           1,200,000
         </ArgonTypography>
       ),
       action,
       location: <LocationButton location="9.8965,8.8583" hospitalName="Budget Inn" />,
+    },
+    {
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              BC
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            BHHR Classic Hotel
+          </ArgonTypography>
+        </ArgonBox>
+      ),
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="STANDARD" color="info" size="xs" container />
+      ),
+      "license status": (
+        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+      ),
+      "number of staff": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          25
+        </ArgonTypography>
+      ),
+      "paye tax status": (
+        <ArgonBadge variant="gradient" badgeContent="PAID" color="success" size="xs" container />
+      ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          1,800,000
+        </ArgonTypography>
+      ),
+      action,
+      location: <LocationButton location="9.8965,8.8583" hospitalName="BHHR Classic Hotel" />,
+    },
+    {
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              IG
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            Ikemba Guest House
+          </ArgonTypography>
+        </ArgonBox>
+      ),
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="GUEST HOUSE" color="info" size="xs" container />
+      ),
+      "license status": (
+        <ArgonBadge variant="gradient" badgeContent="PENDING" color="warning" size="xs" container />
+      ),
+      "number of staff": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          15
+        </ArgonTypography>
+      ),
+      "paye tax status": (
+        <ArgonBadge variant="gradient" badgeContent="PENDING" color="warning" size="xs" container />
+      ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          950,000
+        </ArgonTypography>
+      ),
+      action,
+      location: <LocationButton location="9.8977,8.8597" hospitalName="Ikemba Guest House" />,
+    },
+    {
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              SG
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            Sharpe Guest House
+          </ArgonTypography>
+        </ArgonBox>
+      ),
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="GUEST HOUSE" color="info" size="xs" container />
+      ),
+      "license status": (
+        <ArgonBadge variant="gradient" badgeContent="EXPIRED" color="error" size="xs" container />
+      ),
+      "number of staff": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          18
+        </ArgonTypography>
+      ),
+      "paye tax status": (
+        <ArgonBadge variant="gradient" badgeContent="UNPAID" color="error" size="xs" container />
+      ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          1,200,000
+        </ArgonTypography>
+      ),
+      action,
+      location: <LocationButton location="9.8988,8.8566" hospitalName="Sharpe Guest House" />,
+    },
+    {
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              AG
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            Ajalah Guest House
+          </ArgonTypography>
+        </ArgonBox>
+      ),
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="GUEST HOUSE" color="info" size="xs" container />
+      ),
+      "license status": (
+        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+      ),
+      "number of staff": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          12
+        </ArgonTypography>
+      ),
+      "paye tax status": (
+        <ArgonBadge variant="gradient" badgeContent="PAID" color="success" size="xs" container />
+      ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          800,000
+        </ArgonTypography>
+      ),
+      action,
+      location: <LocationButton location="9.8955,8.8573" hospitalName="Ajalah Guest House" />,
+    },
+    {
+      hotel: (
+        <ArgonBox display="flex" alignItems="center">
+          <ArgonBox mr={2}>
+            <ArgonTypography variant="button" fontWeight="medium">
+              SL
+            </ArgonTypography>
+          </ArgonBox>
+          <ArgonTypography variant="button" fontWeight="medium">
+            Samgamo Lodge
+          </ArgonTypography>
+        </ArgonBox>
+      ),
+      type: (
+        <ArgonBadge variant="gradient" badgeContent="GUEST HOUSE" color="info" size="xs" container />
+      ),
+      "license status": (
+        <ArgonBadge variant="gradient" badgeContent="PENDING" color="warning" size="xs" container />
+      ),
+      "number of staff": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          20
+        </ArgonTypography>
+      ),
+      "paye tax status": (
+        <ArgonBadge variant="gradient" badgeContent="PENDING" color="warning" size="xs" container />
+      ),
+      "expected income from paye": (
+        <ArgonTypography variant="button" color="text" fontWeight="medium">
+          1,400,000
+        </ArgonTypography>
+      ),
+      action,
+      location: <LocationButton location="9.8944,8.8592" hospitalName="Samgamo Lodge" />,
     },
   ],
 };

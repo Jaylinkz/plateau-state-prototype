@@ -94,7 +94,7 @@ function ComplianceAnalytics() {
   const [selectedInstitutionTypes, setSelectedInstitutionTypes] = useState({
     Hotels: false,
     Schools: false,
-    "Filling Stations": false
+    "Hospitals": false
   });
 
   useEffect(() => {

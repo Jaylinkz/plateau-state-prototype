@@ -233,7 +233,7 @@ function Schools() {
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <ArgonTypography variant="h4" fontWeight="medium">
-                      Schools Dashboard
+                      Schools Table
                     </ArgonTypography>
                     <ArgonBox display="flex" gap={2} mt={1}>
                       <ArgonTypography variant="button" fontWeight="regular" color="text">
@@ -326,6 +326,9 @@ function Schools() {
               >
                 <MenuItem onClick={() => handleFilterSelect("licenseStatus", "all", setLicenseFilter, setLicenseAnchor)}>
                   All
+                </MenuItem>
+                <MenuItem onClick={() => handleFilterSelect("licenseStatus", "EXEMPTED", setLicenseFilter, setLicenseAnchor)}>
+                  Exempted
                 </MenuItem>
                 <MenuItem onClick={() => handleFilterSelect("licenseStatus", "RENEWED", setLicenseFilter, setLicenseAnchor)}>
                   Renewed

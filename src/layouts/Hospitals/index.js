@@ -369,7 +369,7 @@ function Hospitals() {
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <ArgonTypography variant="h4" fontWeight="medium">
-                      Hospitals Dashboard
+                      Hospitals Table
                     </ArgonTypography>
                     <ArgonBox display="flex" gap={2} mt={1}>
                       <ArgonTypography variant="button" fontWeight="regular" color="text">
@@ -490,6 +490,13 @@ function Hospitals() {
                   sx={{ borderRadius: '8px' }}
                 >
                   All Licenses
+                </MenuItem>
+                <MenuItem 
+                  onClick={() => handleFilterSelect('licenseFilter', 'exempted', setLicenseFilter, setLicenseAnchor)}
+                  selected={licenseFilter === 'exempted'}
+                  sx={{ borderRadius: '8px' }}
+                >
+                  Exempted
                 </MenuItem>
                 <MenuItem 
                   onClick={() => handleFilterSelect('licenseFilter', 'renewed', setLicenseFilter, setLicenseAnchor)}

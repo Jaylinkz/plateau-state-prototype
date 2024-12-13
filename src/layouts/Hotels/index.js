@@ -201,7 +201,7 @@ function Hotels() {
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <ArgonTypography variant="h4" fontWeight="medium">
-                      Hotels Dashboard
+                      Hotels Table
                     </ArgonTypography>
                     <ArgonBox display="flex" gap={2} mt={1}>
                       <ArgonTypography variant="button" fontWeight="regular" color="text">

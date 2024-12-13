@@ -160,7 +160,7 @@ const schoolsTableData = {
         </ArgonTypography>
       ),
       license_status: (
-        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="EXEMPTED" color="secondary" size="xs" container />
       ),
       number_of_staff: (
         <ArgonTypography variant="button" color="text" fontWeight="regular">
@@ -252,7 +252,7 @@ const schoolsTableData = {
         </ArgonTypography>
       ),
       license_status: (
-        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="EXEMPTED" color="secondary" size="xs" container />
       ),
       number_of_staff: (
         <ArgonTypography variant="button" color="text" fontWeight="regular">
@@ -344,7 +344,7 @@ const schoolsTableData = {
         </ArgonTypography>
       ),
       license_status: (
-        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="EXEMPTED" color="secondary" size="xs" container />
       ),
       number_of_staff: (
         <ArgonTypography variant="button" color="text" fontWeight="regular">
@@ -390,7 +390,7 @@ const schoolsTableData = {
         </ArgonTypography>
       ),
       license_status: (
-        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="EXEMPTED" color="secondary" size="xs" container />
       ),
       number_of_staff: (
         <ArgonTypography variant="button" color="text" fontWeight="regular">
@@ -436,7 +436,7 @@ const schoolsTableData = {
         </ArgonTypography>
       ),
       license_status: (
-        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="EXEMPTED" color="secondary" size="xs" container />
       ),
       number_of_staff: (
         <ArgonTypography variant="button" color="text" fontWeight="regular">
@@ -482,7 +482,7 @@ const schoolsTableData = {
         </ArgonTypography>
       ),
       license_status: (
-        <ArgonBadge variant="gradient" badgeContent="RENEWED" color="success" size="xs" container />
+        <ArgonBadge variant="gradient" badgeContent="EXEMPTED" color="secondary" size="xs" container />
       ),
       number_of_staff: (
         <ArgonTypography variant="button" color="text" fontWeight="regular">
